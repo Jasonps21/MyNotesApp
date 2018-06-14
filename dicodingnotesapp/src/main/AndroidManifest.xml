@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.jason.mynotesapp">
+    package="com.example.jason.dicodingnotesapp">
 
-    <permission android:name="com.example.jason.mynotesapp.READ_DATABASE" android:protectionLevel="normal"/>
-    <permission android:name="com.example.jason.mynotesapp.WRITE_DATABASE" android:protectionLevel="normal"/>
+    <uses-permission android:name="com.example.jason.mynotesapp.READ_DATABASE"/>
+    <uses-permission android:name="com.example.jason.mynotesapp.WRITE_DATABASE"/>
 
     <application
         android:allowBackup="true"
@@ -19,13 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FormAddUpdateAcitivity"></activity>
-        <provider
-            android:authorities="com.example.jason.mynotesapp"
-            android:name=".provider.NoteProvider"
-            android:exported="true"
-            android:readPermission="com.example.jason.mynotesapp.READ_DATABASE"
-            android:writePermission="com.example.jason.mynotesapp.WRITE_DATABASE"/>
+        <activity android:name=".FormActivity"></activity>
     </application>
 
 </manifest>

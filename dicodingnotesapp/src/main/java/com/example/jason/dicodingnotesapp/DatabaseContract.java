@@ -1,4 +1,4 @@
-package com.example.jason.mynotesapp;
+package com.example.jason.dicodingnotesapp;
 
 import android.database.Cursor;
 import android.net.Uri;

@@ -1,21 +1,17 @@
-package com.example.jason.mynotesapp.entity;
+package com.example.jason.dicodingnotesapp.entity;
 
 import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.example.jason.mynotesapp.DatabaseContract;
+import com.example.jason.dicodingnotesapp.DatabaseContract;
 
-import static android.provider.BaseColumns._ID;
-import static com.example.jason.mynotesapp.DatabaseContract.getColumnInt;
-import static com.example.jason.mynotesapp.DatabaseContract.getColumnString;
+import static com.example.jason.dicodingnotesapp.DatabaseContract.getColumnInt;
+import static com.example.jason.dicodingnotesapp.DatabaseContract.getColumnString;
 
-public class note implements Parcelable {
-
+public class NoteItem implements Parcelable {
     private int id;
-    private String title;
-    private String description;
-    private String date;
+    private String title, description, date;
 
     public int getId() {
         return id;
@@ -56,39 +52,39 @@ public class note implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(this.id);
-        parcel.writeString(this.title);
-        parcel.writeString(this.description);
-        parcel.writeString(this.date);
+        parcel.writeInt(id);
+        parcel.writeString(title);
+        parcel.writeString(description);
+        parcel.writeString(date);
     }
 
-    public note() {
+    public NoteItem() {
 
     }
 
-    public note(Cursor cursor){
-        this.id = getColumnInt(cursor, _ID);
+    public NoteItem(Cursor cursor){
+        this.id = getColumnInt(cursor, DatabaseContract.NoteColums._ID);
         this.title = getColumnString(cursor, DatabaseContract.NoteColums.TITLE);
         this.description = getColumnString(cursor, DatabaseContract.NoteColums.DESCRIPTION);
         this.date = getColumnString(cursor, DatabaseContract.NoteColums.DATE);
     }
 
-    protected note(Parcel in){
-        this.id = in.readInt();
-        this.title = in.readString();
-        this.description = in.readString();
-        this.date = in.readString();
+    protected NoteItem(Parcel in) {
+        id = in.readInt();
+        title = in.readString();
+        description = in.readString();
+        date = in.readString();
     }
 
-    public static final Creator<note> CREATOR = new Creator<note>() {
+    public static final Creator<NoteItem> CREATOR = new Creator<NoteItem>() {
         @Override
-        public note createFromParcel(Parcel in) {
-            return new note(in);
+        public NoteItem createFromParcel(Parcel in) {
+            return new NoteItem(in);
         }
 
         @Override
-        public note[] newArray(int size) {
-            return new note[size];
+        public NoteItem[] newArray(int size) {
+            return new NoteItem[size];
         }
     };
 }
